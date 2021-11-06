@@ -5,7 +5,23 @@ import java.util.List;
 public class WeekDto {
 
     List<DayDto> days;
-    long weekTotal;
+    double weekTotal;
+    double monthTotalExcludingWeek;
+    double yearTotalExcludingWeek;
+    double yearTotal;
+    double monthTotal;
+
+    public void setWeekTotal(double weekTotal) {
+        this.weekTotal = weekTotal;
+    }
+
+    public double getMonthTotal() {
+        return monthTotal;
+    }
+
+    public void setMonthTotal(double monthTotal) {
+        this.monthTotal = monthTotal;
+    }
 
     public WeekDto(List<DayDto> days) {
         this.days = days;
@@ -27,4 +43,27 @@ public class WeekDto {
         return total;
     }
 
+    public double getMonthTotalExcludingWeek() {
+        return monthTotalExcludingWeek;
+    }
+
+    public void setMonthTotalExcludingWeek(double monthTotalExcludingWeek) {
+        this.monthTotalExcludingWeek = monthTotalExcludingWeek;
+    }
+
+    public void setYearTotalExcludingWeek(double yearTotalExcludingWeek) {
+        this.yearTotalExcludingWeek = yearTotalExcludingWeek;
+    }
+
+    public double getYearTotalExcludingWeek() {
+        return yearTotalExcludingWeek;
+    }
+
+    public double getYearTotal() {
+        return yearTotal;
+    }
+
+    public void setYearTotal(double yearTotal) {
+        this.yearTotal = yearTotal;
+    }
 }
