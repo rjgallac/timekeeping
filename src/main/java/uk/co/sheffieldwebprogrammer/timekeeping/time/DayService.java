@@ -42,7 +42,7 @@ public class DayService {
             day.setNotes(dayDto.getNotes());
             dayRepository.save(day);
         }
-        
+
     }
 
     public void delete(String id) {

@@ -14,7 +14,7 @@ public class WeekController {
     private WeekService weekService;
 
     @GetMapping
-    public List<DayDto> get(@RequestParam String startDate){
+    public WeekDto get(@RequestParam String startDate){
         LocalDate date = LocalDate.parse(startDate);
         return weekService.getWeek(date);
     }

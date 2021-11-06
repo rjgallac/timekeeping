@@ -82,10 +82,10 @@ public class DayDto {
         this.id = id;
     }
 
-    public long getDiff() {
-        long until = this.getStartAm().until(this.getEndAm(), ChronoUnit.HOURS);
-        long until1 = this.getStartPm().until(this.getEndPm(), ChronoUnit.HOURS);
-        return until + until1;
+    public double getDiff() {
+        double until = this.getStartAm().until(this.getEndAm(), ChronoUnit.MINUTES);
+        double until1 = this.getStartPm().until(this.getEndPm(), ChronoUnit.MINUTES);
+        return (until + until1) /60;
     }
 
 }

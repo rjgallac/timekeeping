@@ -12,13 +12,13 @@ public class WeekService {
     @Autowired
     private DayService dayService;
 
-    public List<DayDto> getWeek(LocalDate date){
+    public WeekDto getWeek(LocalDate date){
         List<DayDto> days = new ArrayList<>();
         for(int i=0; i<5; i++){
             DayDto dayDto = dayService.getDay(date);
             days.add(dayDto);
             date=date.plusDays(1L);
         }
-        return days;
+        return new WeekDto(days);
     }
 }
