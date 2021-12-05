@@ -15,6 +15,7 @@ public class DayDto {
     private LocalTime startPm;
     private LocalTime endPm;
     private String notes;
+    private SummaryDto summaryDto;
 
 
     public DayDto(String id, LocalDate date, LocalTime startAm, LocalTime endAm, LocalTime startPm, LocalTime endPm, String notes) {
@@ -93,5 +94,13 @@ public class DayDto {
     }
     public int getMonthOfYear(){
         return date.get(ChronoField.MONTH_OF_YEAR);
+    }
+
+    public SummaryDto getSummaryDto() {
+        return summaryDto;
+    }
+
+    public void setSummaryDto(SummaryDto summaryDto) {
+        this.summaryDto = summaryDto;
     }
 }

@@ -13,25 +13,40 @@ public class DayController {
     @Autowired
     private DayService dayService;
 
+    @Autowired
+    private SummaryService summaryService;
+
     @GetMapping
     public DayDto get(@RequestParam String startDate){
         LocalDate date = LocalDate.parse(startDate);
-        return dayService.getDay(date);
+        SummaryDto summaryDto = summaryService.weekTotals();
+        DayDto day = dayService.getDay(date);
+        day.setSummaryDto(summaryDto);
+        return day;
     }
 
     @PostMapping
-    public void add(@RequestBody DayDto dayDto){
-        dayService.save(dayDto);
+    public DayDto add(@RequestBody DayDto dayDto){
+        DayDto save = dayService.save(dayDto);
+        SummaryDto summaryDto = summaryService.weekTotals();
+        save.setSummaryDto(summaryDto);
+        return save;
     }
 
     @PutMapping("/{id}")
-    public void put(@PathVariable String id, @RequestBody DayDto dayDto){
-        dayService.put(dayDto, id);
+    public DayDto put(@PathVariable String id, @RequestBody DayDto dayDto){
+        DayDto put = dayService.put(dayDto, id);
+        SummaryDto summaryDto = summaryService.weekTotals();
+        put.setSummaryDto(summaryDto);
+        return put;
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id){
-        dayService.delete(id);
+    public DayDto delete(@PathVariable String id){
+        DayDto delete = dayService.delete(id);
+        SummaryDto summaryDto = summaryService.weekTotals();
+        delete.setSummaryDto(summaryDto);
+        return delete;
     }
 
 }
